@@ -4,14 +4,14 @@ using namespace std;
 class Person{
 // Vi que o ideal é sempre manter eles privados :)
 	private:
-		string name;
+		//atributos
+		string name, sex, nationality;
 		int age;
-		string sex;
-		string nationality;
 	public:
-		Person(string Aname = "Joao", int Aage = 21, string Asex = "Masculino", string Anationality = "Brasileiro");
-		void registeredData();
-		void print();
+		//prototipando os métodos
+		Person(string Aname = "Joao", int Aage = 21, string Asex = "Masculino", string Anationality = "Brasileiro");//método construtor
+		void registeredData();//método para mostrar os dados cadastrados
+		void print();//método que "avalia" algumas caracteristicas e exibe
 };
 
 #endif
