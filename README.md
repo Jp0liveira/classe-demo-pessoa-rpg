@@ -1,2 +1,2 @@
-# class-person
- trabalho refernete a disciplina de programacao II, criação de uma classe sobre pessoas
+# Classe Estudante
+trabalho referente a disciplina de programacao II, criação de uma classe sobre pessoas
