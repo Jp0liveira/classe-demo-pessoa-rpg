@@ -4,35 +4,52 @@ using std::string;
 
 class Estudante{
 	public:
-		Estudante( ); //construtor padrao
-		Estudante( string, int, float, int= 000 ); //construtor com argumentos
-		~Estudante( ); //destrutor
-		Estudante( const Estudante& ); //construtor de copia
-		//get para idade (retorna) | set para idade (modifica)
+		//construtores
+		Estudante( );
+		Estudante( string, int, float, int= 000 );
+		~Estudante( );
+		Estudante( const Estudante& );
+
+		//get|set
 		int getIdade( ); 
 		int getNumeroChamada( );
 		void setNumeroChamada( int );
 		float getNotaFinal( );
-		int getNotaMaxima( ) const; //1-método constante
-		int getIdadeMaxima( ) const; //2-método constante
-		int getNumeroChamada( ) const; //3-método constante
+
+		//static
+		static int getNumEstudantesMaiores( ) { return numEstudantesMaiores;};
+		static void printNotaAzul( );
+
+		//const get | set
+		int getNotaMaxima( ) const;
+		int getIdadeMaxima( ) const;
+		int getNumeroChamada( ) const;
+
+		//const string
+		void caracEstudante( const string & );
+
 		//exibir
 		void print( ) const;
+		
 	private:
 		//atributos
-		string nome;
 		int idade, numeroChamada;	
 		float notaFinal;
+
+		string nome, mensagem;//string		
+		bool comSono = false;//boll
+		static int numEstudantesMaiores;//static
+		static const int numNotas = 4;//const static
+		static const string notaAzul[ numNotas ];//const string
+
 		const float notaMaxima;
 		const int idadeMaxima;
-		//set's
+
 		void setIdade( int );
 		void setNotaFinal( float );
 };
 /*
 caracteristicas a serem implementadas 
-	estressado;(0-100)
-	comSono;(verdadeiro ou falso)
 		panic;
 		ansioso;
 		Estágio;

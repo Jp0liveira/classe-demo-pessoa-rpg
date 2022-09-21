@@ -4,6 +4,10 @@
 using std::cout;
 using std::string;
 
+//instanciação de variaveis statics
+int Estudante::numEstudantesMaiores = 0;
+const string Estudante::notaAzul[ numNotas ] = {"E","B","R","I"};
+
 // inicio-construtores
 Estudante::Estudante( )
 :idadeMaxima( 120 ), notaMaxima( 10.0 )
@@ -26,8 +30,10 @@ Estudante::Estudante( string Anome, int Aidade, float AnotaFinal, int AnumeroCha
 };
 Estudante::Estudante( const Estudante &other ):idadeMaxima( other.idadeMaxima ), notaMaxima( other.notaMaxima ){ //copia
 	nome = other.nome;
-	idade = other.idade;
-	notaFinal = other.notaFinal;
+	// idade = other.idade;
+	setIdade(other.idade);
+	// notaFinal = other.notaFinal;
+	setNotaFinal(other.notaFinal);
 	numeroChamada = other.numeroChamada;
 };
 // fim-construtores
@@ -39,8 +45,13 @@ int Estudante::getIdade( ){
 void Estudante::setIdade( int Aidade ){
 	if (Aidade  >= 0 && Aidade <= idadeMaxima){
 		idade = Aidade;
+		if (Aidade >= 18){
+			//estudantes maiores de idade (criar metodo para cadastrar alunos)
+			numEstudantesMaiores++;
+		}
 	}else{
-		idade = 18;
+		//idade minima
+		idade = 3;
 	}
 };
 int Estudante::getNumeroChamada( ){
@@ -55,6 +66,10 @@ float Estudante::getNotaFinal( ){
 void Estudante::setNotaFinal( float AnotaFinal){
 	if (AnotaFinal >= 0.0 && AnotaFinal <= notaMaxima){
 		notaFinal = AnotaFinal;
+		//bool
+		if (AnotaFinal <= 5){
+			comSono = true;
+		}
 	}else{
 		notaFinal = 0.0;
 	}
@@ -74,11 +89,40 @@ int Estudante::getNumeroChamada( ) const{
 };
 // fim-metodos-constantes
 
+//inicio_novos metodos
+void Estudante::printNotaAzul( ){
+    for( int i = 0; i < numNotas; i++ ){
+		// [E, B, R, I]
+		if (notaAzul[ i ] == "I"){
+			 cout <<"Nota Vermelha: ";
+		}else{
+			 cout <<"Nota Azul: ";
+		}
+		cout << notaAzul[ i ] << ' ' << '(' <<&notaAzul[ i ] << ')' << '\n';
+	}
+}
+void Estudante::caracEstudante( const string &Anome ){
+    //caracteristicas atribuidas ao aluno
+	cout << "\n\tCaracteristicas do Aluno\n";
+    if( comSono ){
+		cout << Anome << " pode estar stressado!\n";
+		if (notaFinal <= 2){
+			cout << Anome << " deve estar desconfortavel!\n";
+		}
+		if (notaFinal == 0.0){
+			cout << Anome << " esta em panico!\n";
+		}
+    }else{
+		cout << Anome << " deve ter iniciado o semestre, mo paz!\n";
+	}
+}
+//fim_novos metodos
+
 // inicio-exibir
 void Estudante::print( ) const{
 	cout << "\nNome: " << nome;
 	cout << "\nIdade: " << idade;
 	cout << "\nNota Final: " << notaFinal;
-	cout << "\nNumero Chamada: " << numeroChamada;
+	cout << "\nNumero Chamada: " << numeroChamada << "\n";
 };
 // fim-exibir
