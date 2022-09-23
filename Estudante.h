@@ -24,6 +24,7 @@ class Estudante{
 		int getNotaMaxima( ) const;
 		int getIdadeMaxima( ) const;
 		int getNumeroChamada( ) const;
+		string getNomeEstudante() const { return nome; };
 
 		//const string
 		void caracEstudante( const string & );
@@ -37,7 +38,7 @@ class Estudante{
 		float notaFinal;
 
 		string nome, mensagem;//string		
-		bool comSono = false;//boll
+		bool comSono;//boll
 		static int numEstudantesMaiores;//static
 		static const int numNotas = 4;//const static
 		static const string notaAzul[ numNotas ];//const string
