@@ -17,9 +17,6 @@ int main( ) {
 	cout << "\n\tNotas Cadastradas\n";
 	estudante1.printNotaAzul( );//const static
 
-	cout << "\nEstudantes maiores de idade: ";
-	cout << estudante1.getNumEstudantesMaiores( ) << " \n";//static
-
 	estudante1.caracEstudante("Felipe");//const string 
 
 	cout << "\n---------------------------------\n";
@@ -28,15 +25,16 @@ int main( ) {
 
 	cout << "\n\tNotas Cadastradas\n";
 	ESTUDANTE2.printNotaAzul( );//const static
+	
+	// ESTUDANTE2.caracEstudante("Thiago");//const string 
+
+	cout << "\nImprimindo Estudantes:\n";
+	for (int i = 0; i < numEstudantes; i++) {
+		cout << estudantes[ i ] << "\n";
+	}
 
 	cout << "\nEstudantes maiores de idade: ";
 	cout << ESTUDANTE2.getNumEstudantesMaiores( ) << " \n";//static
 
-	// ESTUDANTE2.caracEstudante("Thiago");//const string 
-
-	cout << "Imprimindo Estudantes:\n";
-	for (int i = 0; i < numEstudantes; i++) {
-		cout << estudantes[ i ] << "\n";
-	}
 	cout << "\n\n";
 };

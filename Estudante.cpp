@@ -6,11 +6,11 @@ using std::string;
 
 //instanciação de variaveis statics
 int Estudante::numEstudantesMaiores = 0;
-const string Estudante::notaAzul[ numNotas ] = {"E","B","R","I"};
+const string Estudante::NOTAZUL[ NUMERONOTAS ] = {"E","B","R","I"};
 
 // inicio-construtores
 Estudante::Estudante( )
-:idadeMaxima( 120 ), notaMaxima( 10.0 )
+:IDADEMAXIMA( 120 ), NOTAMAXIMA( 10.0 )
 { //padrao
 	//cout << "Inicializando Estudante.\n";
 	nome = "joao";
@@ -21,14 +21,14 @@ Estudante::Estudante( )
 Estudante::~Estudante( ){ //destrutor
 };
 Estudante::Estudante( string Anome, int Aidade, float AnotaFinal, int AnumeroChamada )
-:idadeMaxima(120), notaMaxima(10.0){ //argumento
+:IDADEMAXIMA( 120 ), NOTAMAXIMA( 10.0 ){ //argumento
 	//cout << "contrutor com argumentos\n";
 	nome = Anome;
 	setIdade( Aidade );
 	setNotaFinal( AnotaFinal );
 	numeroChamada = AnumeroChamada;
 };
-Estudante::Estudante( const Estudante &other ):idadeMaxima( other.idadeMaxima ), notaMaxima( other.notaMaxima ){ //copia
+Estudante::Estudante( const Estudante &other ):IDADEMAXIMA( other.IDADEMAXIMA), NOTAMAXIMA( other.NOTAMAXIMA ){ //copia
 	nome = other.nome;
 	// idade = other.idade;
 	setIdade(other.idade);
@@ -43,7 +43,7 @@ int Estudante::getIdade( ){
 	return idade;
 };
 void Estudante::setIdade( int Aidade ){
-	if (Aidade  >= 0 && Aidade <= idadeMaxima){
+	if (Aidade  >= 0 && Aidade <= IDADEMAXIMA){
 		idade = Aidade;
 		if (Aidade >= 18){
 			//estudantes maiores de idade (criar metodo para cadastrar alunos)
@@ -64,7 +64,7 @@ float Estudante::getNotaFinal( ){
 	return notaFinal;
 };
 void Estudante::setNotaFinal( float AnotaFinal){
-	if (AnotaFinal >= 0.0 && AnotaFinal <= notaMaxima){
+	if (AnotaFinal >= 0.0 && AnotaFinal <= NOTAMAXIMA){
 		notaFinal = AnotaFinal;
 		//bool
 		if (AnotaFinal <= 5){
@@ -79,10 +79,10 @@ void Estudante::setNotaFinal( float AnotaFinal){
 // inicio-metodos-constantes
 //esses métodos/atributos so podem ser configurados na inicialização
 int Estudante::getNotaMaxima( ) const{
-	return notaMaxima;
+	return NOTAMAXIMA;
 };
 int Estudante::getIdadeMaxima( ) const{
-	return idadeMaxima;
+	return IDADEMAXIMA;
 };
 int Estudante::getNumeroChamada( ) const{
 	return numeroChamada;
@@ -91,14 +91,14 @@ int Estudante::getNumeroChamada( ) const{
 
 //inicio_novos metodos
 void Estudante::printNotaAzul( ){
-    for( int i = 0; i < numNotas; i++ ){
+    for( int i = 0; i < NUMERONOTAS; i++ ){
 		// [E, B, R, I]
-		if (notaAzul[ i ] == "I"){
+		if (NOTAZUL[ i ] == "I"){
 			 cout <<"Nota Vermelha: ";
 		}else{
 			 cout <<"Nota Azul: ";
 		}
-		cout << notaAzul[ i ] << ' ' << '(' <<&notaAzul[ i ] << ')' << '\n';
+		cout << NOTAZUL[ i ] << ' ' << '(' <<&NOTAZUL[ i ] << ')' << '\n';
 	}
 }
 void Estudante::caracEstudante( const string &Anome ){

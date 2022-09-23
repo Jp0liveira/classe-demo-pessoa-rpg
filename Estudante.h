@@ -4,47 +4,49 @@ using std::string;
 
 class Estudante{
 	public:
-		//construtores
+		// construtores
 		Estudante( );
 		Estudante( string, int, float, int= 000 );
 		~Estudante( );
 		Estudante( const Estudante& );
 
-		//get|set
+		// get|set
 		int getIdade( ); 
 		int getNumeroChamada( );
 		void setNumeroChamada( int );
 		float getNotaFinal( );
 
-		//static
+		// static
 		static int getNumEstudantesMaiores( ) { return numEstudantesMaiores;};
 		static void printNotaAzul( );
 
-		//const get | set
+		// const get | set
 		int getNotaMaxima( ) const;
 		int getIdadeMaxima( ) const;
 		int getNumeroChamada( ) const;
 		string getNomeEstudante() const { return nome; };
 
-		//const string
+		// const string
 		void caracEstudante( const string & );
 
-		//exibir
+		// exibir
 		void print( ) const;
 		
 	private:
-		//atributos
-		int idade, numeroChamada;	
+		// atributos
+		int idade;	
+		int numeroChamada;	
 		float notaFinal;
 
-		string nome, mensagem;//string		
-		bool comSono;//boll
-		static int numEstudantesMaiores;//static
-		static const int numNotas = 4;//const static
-		static const string notaAzul[ numNotas ];//const string
+		string nome;
+		string mensagem; // string	
+		bool comSono; // boll
+		static int numEstudantesMaiores; // static
+		static const int NUMERONOTAS = 4; // const static numNotas 
+		static const string NOTAZUL[ NUMERONOTAS ]; // const string  notaAzul
 
-		const float notaMaxima;
-		const int idadeMaxima;
+		const float NOTAMAXIMA; // 	notaMaxima
+		const int IDADEMAXIMA; // idadeMaxima 
 
 		void setIdade( int );
 		void setNotaFinal( float );
