@@ -6,7 +6,12 @@ using std::string;
 
 //instanciação de variaveis statics
 int Estudante::numEstudantesMaiores = 0;
+<<<<<<< Updated upstream
 const string Estudante::NOTAZUL[ NUMERONOTAS ] = {"E","B","R","I"};
+=======
+const string Estudante::notaAzul[ numNotas ] = {"E","B","R","I"};
+const string Estudante::estadoEstudante[4] =  {"Sono", "Cansado", "Ansioso", "no trabalho"};
+>>>>>>> Stashed changes
 
 // inicio-construtores
 Estudante::Estudante( )
@@ -19,6 +24,7 @@ Estudante::Estudante( )
 	numeroChamada = 0000;
 };
 Estudante::~Estudante( ){ //destrutor
+	numEstudantesMaiores--;
 };
 Estudante::Estudante( string Anome, int Aidade, float AnotaFinal, int AnumeroChamada )
 :IDADEMAXIMA( 120 ), NOTAMAXIMA( 10.0 ){ //argumento
@@ -28,13 +34,18 @@ Estudante::Estudante( string Anome, int Aidade, float AnotaFinal, int AnumeroCha
 	setNotaFinal( AnotaFinal );
 	numeroChamada = AnumeroChamada;
 };
+<<<<<<< Updated upstream
 Estudante::Estudante( const Estudante &other ):IDADEMAXIMA( other.IDADEMAXIMA), NOTAMAXIMA( other.NOTAMAXIMA ){ //copia
 	nome = other.nome;
+=======
+Estudante::Estudante( const Estudante &other ):idadeMaxima( other.idadeMaxima ), notaMaxima( other.notaMaxima ){ //copia
+	this-> nome = other.nome;
+>>>>>>> Stashed changes
 	// idade = other.idade;
-	setIdade(other.idade);
+	this-> setIdade(other.idade);
 	// notaFinal = other.notaFinal;
-	setNotaFinal(other.notaFinal);
-	numeroChamada = other.numeroChamada;
+	this-> setNotaFinal(other.notaFinal);
+	this-> numeroChamada = other.numeroChamada;
 };
 // fim-construtores
 
@@ -43,8 +54,13 @@ int Estudante::getIdade( ){
 	return idade;
 };
 void Estudante::setIdade( int Aidade ){
+<<<<<<< Updated upstream
 	if (Aidade  >= 0 && Aidade <= IDADEMAXIMA){
 		idade = Aidade;
+=======
+	if (Aidade  >= 0 && Aidade <= idadeMaxima){
+		this-> idade = Aidade;
+>>>>>>> Stashed changes
 		if (Aidade >= 18){
 			//estudantes maiores de idade (criar metodo para cadastrar alunos)
 			numEstudantesMaiores++;
@@ -58,22 +74,29 @@ int Estudante::getNumeroChamada( ){
 	return numeroChamada;
 };
 void Estudante::setNumeroChamada( int AnumeroChamada ){
-	numeroChamada = AnumeroChamada;
+	this-> numeroChamada = AnumeroChamada;
 };
 float Estudante::getNotaFinal( ){
 	return notaFinal;
 };
 void Estudante::setNotaFinal( float AnotaFinal){
+<<<<<<< Updated upstream
 	if (AnotaFinal >= 0.0 && AnotaFinal <= NOTAMAXIMA){
 		notaFinal = AnotaFinal;
+=======
+	if (AnotaFinal >= 0.0 && AnotaFinal <= notaMaxima){
+		this-> notaFinal = AnotaFinal;
+>>>>>>> Stashed changes
 		//bool
 		if (AnotaFinal <= 5){
-			comSono = true;
+			this-> comSono = true;
+			return;
 		}
 	}else{
-		notaFinal = 0.0;
+		this-> notaFinal = 0.0;
 	}
 };
+
 // fim-set&get
 
 // inicio-metodos-constantes
@@ -103,10 +126,10 @@ void Estudante::printNotaAzul( ){
 }
 void Estudante::caracEstudante( const string &Anome ){
     //caracteristicas atribuidas ao aluno
-	cout << "\n\tCaracteristicas do Aluno\n";
+	cout << "\n\tCaracteristicas do Estudante\n";
     if( comSono ){
 		cout << Anome << " pode estar stressado!\n";
-		if (notaFinal <= 2){
+		if (notaFinal <= 2.0){
 			cout << Anome << " deve estar desconfortavel!\n";
 		}
 		if (notaFinal == 0.0){
@@ -116,6 +139,24 @@ void Estudante::caracEstudante( const string &Anome ){
 		cout << Anome << " deve ter iniciado o semestre, mo paz!\n";
 	}
 }
+
+void Estudante::caracNotaFinal( ){
+	while ( comSono ){
+		notaFinal++;
+		cout << "\nEstudante precisa estudar!\n";
+		if (notaFinal == 5){
+			break;
+		}
+	}
+}; 
+
+void Estudante::printEstadoEstudante( ){
+	cout << "\n\tO estudante pode estar: \n";
+   for( int i = 0; i < sizeof(estadoEstudante) / sizeof(estadoEstudante[0]); i++ ){
+		cout << estadoEstudante[ i ] << '\n';
+	}
+}
+
 //fim_novos metodos
 
 // inicio-exibir
