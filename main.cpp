@@ -1,15 +1,11 @@
-#include <iostream>
-#include "Aluno.cpp" 
+#include "Aluno.cpp"
+#include "Aluno.h"
 
 int main( ){
-	Aluno joao("Joao", "estudioso", 21, 3.5);
-	Aluno *joaoPtr;
-	joaoPtr =  new Aluno("Felipe", "timido", 19, 7.5);
-	joaoPtr->printCaracteristicasAluno( );
-	joaoPtr = new Aluno;
-	joaoPtr->printCaracteristicasAluno( );
-	joaoPtr = &joao;
-	joaoPtr->printCaracteristicasAluno( );
+	
+	Aluno joao("joao", "bagunceiro", 21, 7.0);
+	Aluno *joaoPtr = &joao;
+	joaoPtr->printHistoricoIdadeAlunos( );
 
 	return 0;
 };

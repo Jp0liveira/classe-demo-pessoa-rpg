@@ -7,64 +7,79 @@ using std::cout;
 
 class Aluno{
 	public:
-		//construtores
-		Aluno( );
-		Aluno( string , string, int = 18, float = 0.0);//parametro default
-		Aluno( const Aluno & );
-		~Aluno( );
+			//construtores
+			Aluno( );
+			Aluno( string , string, int = 18, float = 0.0);//parametro default
+			Aluno( const Aluno & );
+			~Aluno( );
 
-		//set e get
-		void setNomeAluno( string );
-		string getNomeAluno( );
+			//set e get
+				//verificar
+			void setNomeAluno( string );
+			string getNomeAluno( );
 
-		void setTipoAluno( string );
-		string getTipoAluno( );
+			void setTipoAluno( string );
+			string getTipoAluno( );
 
-		void setIdadeAluno( int );
-		int getIdadeAluno( );
+			void setIdadeAluno( int );
+			int getIdadeAluno( );
 
-		bool setEscudoNotaAtual( int );
-		int getEscudoNotaAtual( );
+			bool setEscudoNotaAtual( int );
+			int getEscudoNotaAtual( );
 
-		void setVidaAlunoSemestre( float );
-		float getVidaAlunoSemestre( );
+			void setVidaAlunoSemestre( float );
+			float getVidaAlunoSemestre( );
 
-		void setNotaFinalAluno( float );
-		float getNotaFinalAluno( );
+			void setNotaFinalAluno( float );
+			float getNotaFinalAluno( );
 
-		void receberDanoNota( int );
-		void curarDanoNota( int );
+				//funcoes
+			void receberDanoNota( int );
+			void curarDanoNota( int );
+			void bonusNotaAluno( float );
 
-	//exibir
-		void printCaracteristicasAluno( ) const;//const
+		//exibir
+			void printCaracteristicasAluno( ) const;//const
 
-	//métodos static
-		static int getNumTotalgeralAlunos ( ) { return totalGeralAlunos;}
-		void printTiposCadastrados( );
+		//métodos static
+			static int getNumTotalgeralAlunos ( ) { return totalGeralAlunos;}
+			void printTiposCadastrados( );
 
-	
+		//alocacao
+		void cadastrarHistALunosIdade( int );
+		void alocarHistALunosIdade( int );
+		void printHistoricoIdadeAlunos ( ) const;
+
+		
 
 	private:
-		//atributos
-		int idadeAluno, escudoNotaAtual;
+			//atributos
+			int idadeAluno, escudoNotaAtual;
 
-		float vidaAlunoSemestre, notaFinalAluno;
+			float vidaAlunoSemestre, notaFinalAluno;
 
-		string nomeAluno, tipoAluno;
+			string nomeAluno, tipoAluno;
 
-		bool fadigaAlunoNota = false;	
+			bool fadigaAlunoNota = false;	
 
-		const int IDADEALUNOMAXIMO;
-		const int ESCUDONOTAMAXIMO;
-		const int VIDAALUNOSEMESTREMAXIMO;
-		const float NOTAFINALMAXIMO;
+			const int IDADEALUNOMAXIMO;
+			const int ESCUDONOTAMAXIMO;
+			const int VIDAALUNOSEMESTREMAXIMO;
+			const float NOTAFINALMAXIMO;
 
-		//atributos static
-		
-		static int totalGeralAlunos;
-		static const int NUMTIPOSCADASTRADOS = 7;
-		static const string TIPOS[ NUMTIPOSCADASTRADOS ];
+			//atributos static
+			
+			static int totalGeralAlunos;
+			static const int NUMTIPOSCADASTRADOS = 7;
+			static const string TIPOS[ NUMTIPOSCADASTRADOS ];
 
+			//alocacao de memoria
+				//historico de idades dos alunos
+			int *histAlunosIdadePtr;
+			int tamAlocadoHistoricoAlunosIdade, qtdHistoricoAlunosIdade;
+			void printHistAlunosIdade( ) const;
+			void alocaHistAlunosIdade( int );	
+			
 };
 
 #endif
