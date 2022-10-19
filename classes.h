@@ -1,0 +1,9 @@
+#pragma once
+#include "Estudioso.h"
+#include "Estudioso.cpp"
+#include "Pessoa.h"
+#include  "Pessoa.cpp"
+#include "Aluno.h"
+#include  "Aluno.cpp"
+#include "Habilidades.h"
+#include  "Habilidades.cpp"
