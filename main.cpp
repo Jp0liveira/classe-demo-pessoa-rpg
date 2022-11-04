@@ -15,5 +15,7 @@ int main() {
  	thiago.receberDanoNota( );
 	thiago.printCaracteristicaEstudioso( thiago );
 	thiago.materialSemestreEstudioso( );
+	
 	return 0;
+
 }

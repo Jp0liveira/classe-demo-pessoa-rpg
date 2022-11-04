@@ -1,5 +1,4 @@
 #pragma once
-#include "Pessoa.h"
 #include "Aluno.h"
 #include "Habilidades.h"
 #include "Materiais.h"
@@ -10,7 +9,7 @@ using std::vector;
 #include <string>
 using std::string;
 
-class Estudioso: public Pessoa, public Aluno, public Habilidades, public Materiais{
+class Estudioso: public Aluno, public Habilidades, public Materiais{
 	public:
 		Estudioso( );
 		~Estudioso( );
@@ -32,7 +31,7 @@ class Estudioso: public Pessoa, public Aluno, public Habilidades, public Materia
 		static const float ESCUDOESTUDIOSO;
 		static const float DANONOTAESTUDIOSO;
 		static const float VIDASEMESTREESTUDIOSO;
-
-   	Materiais numMateriaisEstudioso;// struct
+		
+   		Materiais numMateriaisEstudioso;// struct
 	
 };

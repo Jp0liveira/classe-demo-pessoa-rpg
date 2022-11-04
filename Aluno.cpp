@@ -5,16 +5,17 @@ using std::cout;
 
 //static  
 const string Aluno::NOTAS[ CONCEITOS ]= { "E", "B", "R", "I" }; 
+const string Aluno::NOMECLASS = "aluno";
 
 // inicio - construtores
-Aluno::Aluno( ): NOTAMAXALUNO( 10.0 ), NOTAMINALUNO( 0.0 ){
+Aluno::Aluno( ): NOTAMAXALUNO( 10.0 ), NOTAMINALUNO( 0.0 ), Pessoa( ){
 	notaFinalAluno = NOTAMINALUNO;
 	matriculaAluno = 000;
 };
 
-Aluno::Aluno( float AnotaFinalAluno,  int AmatriculaAluno ): NOTAMAXALUNO( 10.0 ), NOTAMINALUNO( 0.0 ){
-	setNotaFinalAluno( AnotaFinalAluno );
-	setMatriculaAluno( AmatriculaAluno );
+Aluno::Aluno( int idadeAluno, string nomeAluno, int diaNascimento, int mesNascimento, int anoNascimento, float notaFinalAluno,  int matriculaAluno ): NOTAMAXALUNO( 10.0 ), NOTAMINALUNO( 0.0 ), Pessoa( idadeAluno, nomeAluno, NOMECLASS, diaNascimento, mesNascimento, anoNascimento){
+	this->setNotaFinalAluno( notaFinalAluno );
+	this->setMatriculaAluno( matriculaAluno );
 };
 
 Aluno::Aluno( const Aluno& other): NOTAMAXALUNO( other.NOTAMAXALUNO ), NOTAMINALUNO( other.NOTAMINALUNO ){

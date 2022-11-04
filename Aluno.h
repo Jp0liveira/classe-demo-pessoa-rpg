@@ -2,10 +2,10 @@
 #include "Pessoa.h"
 #include "Habilidades.h"
 
-class Aluno{
+class Aluno: public Pessoa{
 	public:
 		Aluno( );
-		Aluno( float , int );
+		Aluno( int , string , int , int , int , float , int );
 		Aluno( const Aluno & );
 		~Aluno( );
 
@@ -27,5 +27,7 @@ class Aluno{
 
 		static const int CONCEITOS = 4;
 		static const string NOTAS[ CONCEITOS ];
+
+		static const string NOMECLASS;	
 
 };
