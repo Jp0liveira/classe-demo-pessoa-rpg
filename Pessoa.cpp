@@ -3,21 +3,21 @@
 using std::cout;
 
 //static's
-const string Pessoa::TIPOS[ PESSOAS ] = {"aluno"};
+const string Pessoa::TIPOS[ PESSOAS ] = {"aluno", "professor"};
 
 // inicio - construtores
 Pessoa::Pessoa( ): IDADEMAXIMA( 120 ), IDADEMINIMA( 3 ), SIZENOME( 70 ){
-	idadePessoa = 0;
-	nomePessoa = "default";
-	tipoPessoa = "default";
-	setDataNascimento( dia, mes, ano );
+	this -> idadePessoa = 0;
+	this -> nomePessoa = "default";
+	this -> tipoPessoa = "default";
+	this -> setDataNascimento( dia, mes, ano );
 };
 
 Pessoa::Pessoa( int AidadePessoa, string AnomePessoa, string AtipoPessoa, int Adia, int Ames, int Aano): IDADEMAXIMA( 120 ), IDADEMINIMA( 3 ), SIZENOME( 70 ){
-	setIdadePessoa( AidadePessoa );
-	setNomePessoa( AnomePessoa );
-	setTipoPessoa( AtipoPessoa );
-	setDataNascimento( Adia, Ames, Aano );
+	this -> setIdadePessoa( AidadePessoa );
+	this -> setNomePessoa( AnomePessoa );
+	this -> setTipoPessoa( AtipoPessoa );
+	this -> setDataNascimento( Adia, Ames, Aano );
 };
 
 Pessoa::Pessoa( const Pessoa& other): IDADEMAXIMA( other.IDADEMAXIMA ), IDADEMINIMA( other.IDADEMINIMA ), SIZENOME( other.SIZENOME ){
@@ -32,45 +32,45 @@ Pessoa::Pessoa( const Pessoa& other): IDADEMAXIMA( other.IDADEMAXIMA ), IDADEMIN
 Pessoa::~Pessoa( ){ };
 // fim - construtores
 
-//inicio - set
+// inicio - set
 void Pessoa::setIdadePessoa( int AidadePessoa ){
-	if (AidadePessoa >= IDADEMINIMA && AidadePessoa <= IDADEMAXIMA){
-		idadePessoa = AidadePessoa;
+	if ( AidadePessoa >= IDADEMINIMA && AidadePessoa <= IDADEMAXIMA ){
+		this -> idadePessoa = AidadePessoa;
 		return;
 	}
-	idadePessoa = IDADEMINIMA;
+	this -> idadePessoa = IDADEMINIMA;
 };
 
 void Pessoa::setNomePessoa( string AnomePessoa ){
 	if ( AnomePessoa.length( ) <= SIZENOME ){
-		nomePessoa = AnomePessoa;
+		this -> nomePessoa = AnomePessoa;
 		return;
 	}
-	nomePessoa = "default";
+	this -> nomePessoa = "default";
 };
 
 void Pessoa::setTipoPessoa( string AtipoPessoa ){
 	for ( int i = 0; i < PESSOAS; i++ ){// pessoas cadastradas
 		if ( AtipoPessoa == TIPOS[ i ] ){
-			tipoPessoa = AtipoPessoa;
+			this -> tipoPessoa = AtipoPessoa;
 			return;
 		}	
-		tipoPessoa = TIPOS[ i ];
+		this -> tipoPessoa = TIPOS[ i ];
 	}
 };
-//fim - set
+// fim - set
 
 // inicio - Data
 void Pessoa::setDataNascimento( int d, int m, int a){
 	if ( m > 0 && m <= 12 ){
-		mes = m;
+		this -> mes = m;
 	}	
 	if ( a < 0 ){
-		ano = 1900;
+		this -> ano = 1900;
 	}else{
-		ano = a;
+		this -> ano = a;
 	}
-	dia = verificaDia( d );
+	this -> dia = verificaDia( d );
 };
 int Pessoa::verificaDia( int diaTeste) {
 	  static const int diasPorMes[ 13 ] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -87,44 +87,23 @@ int Pessoa::verificaDia( int diaTeste) {
 // fim - Data
 
 //inicio - sobrecarga de operadores
-ostream &operator<<(ostream &COUT, const Pessoa &pessoa){
-    COUT << "\nInformacoes sobre este Treinador:\n";
+ostream &operator<<( ostream &COUT, const Pessoa &pessoa ){
+    COUT << "\n----------- INF. GERAIS -----------\n";
     COUT << "Nome da Pessoa: " << pessoa.nomePessoa << "\n";
     COUT << "Idade Pessoa: " << pessoa.idadePessoa << "\n";
-    COUT << "Tipo de pessoa: " << pessoa.tipoPessoa;
+    COUT << "Tipo de pessoa: " << pessoa.tipoPessoa << "\n";
+	COUT << "Data de nascimento: " << pessoa.dia << "/" << pessoa.mes << "/" << pessoa.ano << "\n"; 
     return COUT;
 };
-
-// Pessoa::operator=( int NovaidadePessoa) {
-// 	int verificar = 2022 - ano;  
-//     if (verificar == NovaidadePessoa ){
-//         this -> idadePessoa = idadePessoa;
-// 				this -> ano = ano;
-//     } else {
-//       cout << "\nidade difente do ano de nascimento, nova idade: " << "\n";
-//     }
-// };
-// não terminei direito 
-// Pessoa::operator!( ){ 
-// }
-
-
-// Pessoa::operator==(const Pessoa &outro) {
-  
-// }
-
-// bool Pessoa::operator!=(const Pessoa &outro) {
-// }
-
 // fim -sobrecarga de operadores 
 
 // inicio - exibir
 void Pessoa::printCaracteristicaPessoa( ) const {
 	cout << "\n-------- CARAC. PESSOA --------";
-	cout << "\nIdade da Pessoa: " << idadePessoa << "\n";
-	cout << "Data de Nascimento: " << dia << "/" << mes << "/" << ano << "\n";
-	cout << "Nome da Pessoa: " << nomePessoa << "\n";
-	cout << "Tipo da Pessoa: " << tipoPessoa << "\n";
+	cout << "\nIdade da Pessoa: " << this -> idadePessoa << "\n";
+	cout << "Data de Nascimento: " << this -> dia << "/" << this -> mes << "/" << this -> ano << "\n";
+	cout << "Nome da Pessoa: " << this -> nomePessoa << "\n";
+	cout << "Tipo da Pessoa: " << this -> tipoPessoa << "\n";
 	cout << "--------------------------------\n";
 };
 

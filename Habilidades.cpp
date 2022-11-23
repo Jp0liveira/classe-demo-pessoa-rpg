@@ -2,16 +2,16 @@
 #include "Habilidades.h"
 
 // inicio - construtores
-Habilidades::Habilidades( ): ESCUDONOTAMINIMO( 0.0 ), ESCUDONOTAMAXIMO( 50.0 ), VIDASEMESTREMAXIMO( 100.0 ){
-	escudoNota = ESCUDONOTAMINIMO;
-	danoNota = 0.0;
-	vidaSemestre = VIDASEMESTREMAXIMO;
+Habilidades::Habilidades( ): ESCUDONOTAMINIMO( 0.0 ), ESCUDONOTAMAXIMO( 100.0 ), VIDASEMESTREMAXIMO( 100.0 ){
+	this -> escudoNota = ESCUDONOTAMINIMO;
+	this -> danoNota = 0.0;
+	this -> vidaSemestre = VIDASEMESTREMAXIMO;
 };
 
-Habilidades::Habilidades( float AescudoNota, float AdanoNota, float AvidaSemestre ): ESCUDONOTAMINIMO( 0.0 ), ESCUDONOTAMAXIMO( 50.0 ), VIDASEMESTREMAXIMO( 100.0 ){
-	setEscudoNota(  AescudoNota );
-	setDanoNota( AdanoNota );
-	setVidaSemestre( AvidaSemestre );
+Habilidades::Habilidades( float escudoNota, float danoNota, float vidaSemestre ): ESCUDONOTAMINIMO( 0.0 ), ESCUDONOTAMAXIMO( 100.0 ), VIDASEMESTREMAXIMO( 100.0 ){
+	this -> setEscudoNota(  escudoNota );
+	this -> setDanoNota( danoNota );
+	this -> setVidaSemestre( vidaSemestre );
 };
 
 Habilidades::Habilidades( const Habilidades& other): ESCUDONOTAMINIMO( other.ESCUDONOTAMINIMO ), ESCUDONOTAMAXIMO( other.ESCUDONOTAMAXIMO ), VIDASEMESTREMAXIMO( other.VIDASEMESTREMAXIMO ){
@@ -21,67 +21,71 @@ Habilidades::Habilidades( const Habilidades& other): ESCUDONOTAMINIMO( other.ESC
 };
 
 Habilidades::~Habilidades( ){ };
-// inicio - construtores
+// fim - construtores
 
-// inicio - verificar
-void Habilidades::setEscudoNota( float AescudoNota ){
-	if ( AescudoNota >= ESCUDONOTAMINIMO && AescudoNota <= ESCUDONOTAMAXIMO ){
-		escudoNota = AescudoNota;
+// inicio - set
+void Habilidades::setEscudoNota( float escudoNota ){
+	if ( escudoNota >= ESCUDONOTAMINIMO && escudoNota <= ESCUDONOTAMAXIMO ){
+		this -> escudoNota = escudoNota;
 		return;
 	}
-	escudoNota = ESCUDONOTAMAXIMO;
+	this -> escudoNota = ESCUDONOTAMAXIMO;
 	fadiga = false;
 };
 
-void Habilidades::setDanoNota( float AdanoNota ){
-	if ( AdanoNota > VIDASEMESTREMAXIMO ){// aluno esgotado
-		danoNota = 0.0;
-		escudoNota = 0.0;
-		vidaSemestre = 0.0;
+void Habilidades::setDanoNota( float danoNota ){
+	if ( danoNota > VIDASEMESTREMAXIMO ){// aluno esgotado
+		this -> danoNota = 0.0;
+		this -> escudoNota = 0.0;
+		this -> vidaSemestre = 0.0;
 		return;
 	}
-	danoNota = AdanoNota;
+	this -> danoNota = danoNota;
 };
 
-void Habilidades::setVidaSemestre( float AvidaSemestre ){
-	if ( AvidaSemestre <= VIDASEMESTREMAXIMO ){
-		vidaSemestre = AvidaSemestre;
+void Habilidades::setVidaSemestre( float vidaSemestre ){
+	if ( vidaSemestre >= ESCUDONOTAMINIMO && vidaSemestre <= VIDASEMESTREMAXIMO ){
+		this -> vidaSemestre = vidaSemestre;
 		return;
 	}
-	vidaSemestre = VIDASEMESTREMAXIMO;// meio que um bonus ao inverso
-	
+	this -> vidaSemestre = VIDASEMESTREMAXIMO;// meio que um bonus ao inverso
+	fadiga = false;
 };
-// fim - verificar
+// fim - set
 
-// inicio - funcoes  
+// inicio - habilidades  
 void Habilidades::receberDanoNota(  ){
-	if ( danoNota > escudoNota ){// escudo quebra 
-		escudoNota = ESCUDONOTAMINIMO;
+	if ( danoNota >= escudoNota ){// escudo quebra 
+		this -> escudoNota = ESCUDONOTAMINIMO;
 		fadiga = true;
 	}
 	if ( fadiga ){
-		vidaSemestre--;
-		if ( vidaSemestre == 0.0 ){
-			vidaSemestre = VIDASEMESTREMAXIMO;// aluno "morreu" e vida reiniciada
-		}
+		this -> setVidaSemestre( vidaSemestre -= danoNota / 2 );
 		return;
 	}
-	escudoNota -= danoNota;
+	this -> escudoNota -= danoNota;
 };
 
-void Habilidades::curarDanoNota( float curarNota ){// 0 - 10 de cura
+void Habilidades::curarDanoNota( float curarNota ){// 0 - 10 de cura ( > 10 cura o escudo )
 	if ( curarNota < 0 ){
-			curarNota *= -1;// bencao de Jp
+		curarNota *= -1;// bencao de Jp
 	}
 	if ( ( fadiga && ( curarNota <= ( VIDASEMESTREMAXIMO / 10 ) ) )){
-		setEscudoNota( escudoNota += curarNota ); 
+		this -> setVidaSemestre( vidaSemestre += curarNota );
 		return;
 	}
-	setVidaSemestre( vidaSemestre += curarNota );
-	
+	this -> setEscudoNota( escudoNota += curarNota ); 
 };
-// fim - funcoes
+// fim - habilidades
 
+void Habilidades::printHabilidades( ) {
+	cout << "\n------- CARAC. HABILIDADES --------\n";
+	cout << "Vida semestre:\t|\t" << getVidaSemestre( )  << "\n";
+	cout << "Escudo nota:\t|\t" << getEscudoNota( )  << "\n";
+	cout << "Dano nota:\t\t|\t" << getDanoNota( )  << "\n";
+	
+	cout << "-----------------------------------\n";
+};
 
 
 //funções a parte, implementadas mais a frente
