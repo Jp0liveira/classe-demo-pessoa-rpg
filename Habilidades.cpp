@@ -87,30 +87,3 @@ void Habilidades::printHabilidades( ) {
 	cout << "-----------------------------------\n";
 };
 
-
-//funções a parte, implementadas mais a frente
-
-// void Habilidades::rendimentoAluno( ){// aluno cansado, rendimento não tão bom :(
-// 	escudoNota *= 0.5;
-// };
-
-// void Habilidades::momentoRaiva( ){
-// 	// (0) não liga -- (10) liga muito;
-// 	danoNota -= 0.1;
-// 	vidaSemestre += 0.1;
-// };
-
-// void Habilidades::bonusNotaAluno( float bonusNota ){//notaAlunoRelacionado
-// 	int contador = 0;
-// 	while( fadiga ){
-// 		notaFinalAluno += bonusNota;
-// 		cout << "\nBonus aplicado: " << notaFinalAluno << "\n";
-// 		contador++;
-// 		if ( contador == 1 ){// sim, eu fiz isso :)
-// 			return;
-// 		}
-// 	}
-// 	cout << "\nO bonus não pode ser aplicado.\n";
-// };
-
-// inicio - funcoes  

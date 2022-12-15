@@ -3,6 +3,8 @@
 #include "Pessoa.h"
 #include "Aluno.h"
 
+// classe abstrata
+
 using std::string;
 
 class Professor: public Pessoa{
@@ -11,12 +13,16 @@ class Professor: public Pessoa{
         Professor( );
         Professor( int, string, int, int, int );
         Professor( const Professor & );
-        ~Professor( );
-
-        // exibir 
-        void exibirConceito( Aluno );
-
+       
+        //polimorfismo
+        virtual ~Professor( );
+        virtual void relatorioDesempenho( Aluno );
+        virtual float getBonificacao( ) = 0;
+        
     private:
         // static
         const static string NOMECLASSPROFESSOR; 
+
+         //polimorfismo
+        virtual void metodoAvaliativo( ) = 0;  
 };

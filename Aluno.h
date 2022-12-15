@@ -8,8 +8,7 @@ class Aluno: public Pessoa{
 		Aluno( );
 		Aluno( int , string , int , int , int , float , int );
 		Aluno( const Aluno & );
-		~Aluno( );
-
+		
 		// set & get
 		void setNotaFinalAluno( float );
 		void setMatriculaAluno( int );
@@ -20,6 +19,9 @@ class Aluno: public Pessoa{
 		// exibir  
 		void printCaracteristicaAluno( ) const;
 		void printNotasCadastrados( );
+		
+		//polimorfismo
+		virtual ~Aluno( );
 
 		// static
 		static const int CONCEITOS = 4;

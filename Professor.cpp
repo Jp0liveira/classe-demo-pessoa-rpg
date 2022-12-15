@@ -17,19 +17,20 @@ Professor::~Professor( ){ };
 // fim - construtores
 
 // inicio - exibir
-void Professor::exibirConceito( Aluno tipoAluno ){
+void Professor::relatorioDesempenho( Aluno tipoAluno ){
     cout << "\n-------- CONCEITO. ALUNO --------";
     cout << "\nConceito atribuido ao aluno: ";
-    float notaFinalProfessor =  tipoAluno.getNotaFinalAluno( );
-   if ( notaFinalProfessor > 8.0 ){
-    cout << tipoAluno.NOTAS[ 0 ];
-   }else if( notaFinalProfessor >= 7 ){
-     cout << tipoAluno.NOTAS[ 1 ];
-   }else if( notaFinalProfessor >= 5){
-    cout << tipoAluno.NOTAS[ 2 ];
-   }else{
-     cout << tipoAluno.NOTAS[ 3 ];
-   }
-   cout << "\n--------------------------------\n";
+    float notaFinalProfessor = tipoAluno.getNotaFinalAluno( );
+    if ( notaFinalProfessor > 8.0 ){
+      cout << tipoAluno.NOTAS[ 0 ];
+    }else if( notaFinalProfessor >= 7 ){
+      cout << tipoAluno.NOTAS[ 1 ];
+    }else if( notaFinalProfessor >= 5){
+      cout << tipoAluno.NOTAS[ 2 ];
+    }else{
+      cout << tipoAluno.NOTAS[ 3 ];
+    }
+    cout << "\n--------------------------------\n";
 };
 // fim - exibir
+

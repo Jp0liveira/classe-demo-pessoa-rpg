@@ -5,7 +5,6 @@ using std::ctime;
 using std::cout;
 
 // inicio - static
-
 int Estudioso::numEstudiosos = 0;
 const int Estudioso::ESTUDIOSOIDADE = 00;
 const int Estudioso::DIANASCIMENTO = 01;

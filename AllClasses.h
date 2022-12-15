@@ -10,6 +10,7 @@
 #include "Professor.cpp"
 
 #include "Materiais.h"
+#include "PrepararAula.h"
 
 #include "Habilidades.h"
 #include "Habilidades.cpp"
@@ -19,6 +20,15 @@
 
 #include "Bagunceiro.h"
 #include "Bagunceiro.cpp"
+
+#include "ProfessorEnsinoMedio.h"
+#include "ProfessorEnsinoMedio.cpp"
+
+#include "ProfessorEnsinoSuperior.h"
+#include "ProfessorEnsinoSuperior.cpp"
+
+#include "ProfessorFisica.h"
+#include "ProfessorFisica.cpp"
 
 
 
