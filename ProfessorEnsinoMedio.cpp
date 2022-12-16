@@ -20,6 +20,8 @@ ProfessorEnsinoMedio::ProfessorEnsinoMedio( int idadeProfessor, string nomeProfe
     this->setTipoProfessor( tipoProfessor );
     this->setNumProvas( 1 );
     this->setNumTrabalhos( 1 );
+    this->tema = "default";
+    this->materiaisApoio = "default";
 };
 
 //tema, materiaisapoio, aulasInterativas, numProvas, numTrabalhos 
@@ -29,6 +31,7 @@ ProfessorEnsinoMedio::ProfessorEnsinoMedio( string tema, string materiaisApoio, 
     this->aulasInterativas = aulasInterativas;
     this->setNumProvas( numProvas );
     this->setNumTrabalhos( numTrabalhos );
+
 };
 
 ProfessorEnsinoMedio::ProfessorEnsinoMedio( const ProfessorEnsinoMedio &otherProfessor ):Professor( otherProfessor ), NUMMAXIMOPROVAS( otherProfessor.NUMMAXIMOPROVAS ), NUMMAXIMOTRABALHOS( otherProfessor.NUMMAXIMOTRABALHOS ){ 
@@ -111,5 +114,7 @@ float ProfessorEnsinoMedio::getBonificacao( ){// bonus de salario para um profes
 // fim - polimorfismo 
 
 //  inicio - sobrecarga de operadores
+// em processo...
+//  fim - sobrecarga de operadores
 
 

@@ -58,36 +58,31 @@ int main( ) {
 	cout<< "Bonificacao de 10%: "<< professorMedio.getBonificacao( );
 
 	cout << "\nProfessor do ensino superior\n";
+	
+	// cadastrando o planejamento dos professsores...
+	professorSuperior.planoDeAulas( "1° Apresentação da matéria e discussão dos objetivos do curso" );
+	professorSuperior.planoDeAulas( "2° Discussão sobre as expectativas e objetivos da disciplina " );
+	
+	
+	professorSuperior.curriculoProfessor( "1° Dados Pessoais" );
+	professorSuperior.curriculoProfessor( "2° Formação Acadêmica" );
 
-	professorSuperior.planoDeAulas( "1° Tratar com a direcao" );
-	professorSuperior.curriculoProfessor( "1° Tratar com a direcao" );
-	professorSuperior.participacaoComites( "1° Tratar com a direcao" );
+	professorSuperior.participacaoComites( "1° Professor de Matemática Aplicada na Universidade Federal de Santa Catarina (2015-atual)" );
+	professorSuperior.participacaoComites( "2° Professor de Matemática Aplicada na Universidade do Estado de Santa Catarina (2008-2015)" );
+
 	professorSuperior.printPlanejamento( );
 	cout<< "Bonificacao de 20%: "<< professorSuperior.getBonificacao( );
 
 	cout << "\nProfessor do ensino medio: professor de fisica\n";
 	professordeFisica.metodoAvaliativo( );
 	
-	//cout << professorFisica.getTipoProfessor( );
-	
-	// professorFisica.prepararAula( );
-	// professorFisica.metodoAvaliativo( );
+	cout << professordeFisica.getTipoProfessor( );
 
-	//cout << professor.getBonificacao( );
-	// cout << professor.getSalario( );
-	// cout << "\n";
-	// cout << professor.getBonificacao( );
-	// cout << "\n";
-	// cout << professorFisica.getBonificacao( );
-
-	//professorFisica.relatorioDesempenho( estudioso );
+	professordeFisica.prepararAula( );
+	professordeFisica.metodoAvaliativo( );
 
 
-	//ProfessorFisica metododogia( "História do Brasil", "Livros da Biblioteca", true, 3, 4 );
-	//professor = metododogia;// ideia de sobrecarga de operadores
-	//metododogia.prepararAula( );
-
-	//professor.relatorioDesempenho( estudioso );
+	professordeFisica.relatorioDesempenho( estudioso );
 
 	return 0;
 

@@ -108,3 +108,7 @@ void ProfessorEnsinoSuperior::metodoAvaliativo( ){
 };
 
 // fim - polimorfismo 
+
+//  inicio - sobrecarga de operadores
+// em processo...
+//  fim - sobrecarga de operadores
